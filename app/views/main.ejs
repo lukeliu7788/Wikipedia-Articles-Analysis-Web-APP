@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WikiLatics</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="/css/author.css" />
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="javascript:void(0);">
+                        WikiLatics
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" id="overallButton">Overall Analysis</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" id="individualButton">Individual Analysis</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" id="authorButton">Author Analysis</a>
+                </li>
+                <li>
+                    <a href="/logout" id="logout">Log Out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid" id="overall" style="display:block">
+                <h1>Overall Analytic</h1>
+                <hr>
+                <h5>Input the number of top & bottom: </h5>
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="form-control" name="search" id="searchIndividual" />
+                    </div>
+                    <input type="button" id="searchIndividualButton" value="search" class="btn btn-primary mb-2" />
+                </form>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h4 id="topN">Top 3:</h4>
+                        <div id="top"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 id="botN">Bottom 3:</h4>
+                        <div id="bot"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>MostEditedArticle:</h4>
+                        <div id="most"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>LeastEditedArticle:</h4>
+                        <div id="least"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>LongestHistoryArticle:</h4>
+                        <div id="longest"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>ShortestHistoryArticle:</h4>
+                        <div id="shortest"></div>
+                    </li>
+                </ul>
+                <hr>
+                <div>
+                    <h5>Choose the type of chart:</h5>
+                    <button class="btn btn-login" href="" id="pie">Pie Chart</button>
+                    <button class="btn btn-login" href="" id="bar">Bar Charts</button>
+                </div>
+                <div id="myChart"></div>
+            </div>
+            <div class="container-fluid" id="individual" style="display:none">
+                    <h1>Individual Analytic</h1>
+                    <hr>
+                    <h5>Choose the article</h5>
+                    <select id="articleList">
+                      <option value="-1">Select Article</option>
+                    </select>
+                    <hr>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <p id="SelectedTitle">Title:</p>
+                      </li>
+                      <li class="list-group-item">
+                        <p id="SelectedRevisions">Total number of revisions:</p>
+                      </li>
+                      <li class="list-group-item">
+                        <p id="SelectedTop5">Top 5 users:</p>
+                      </li>
+                    </ul>
+                    <hr>
+                    <h5>Choose the type of chart:</h5>
+                    <select id="chartType">
+                      <option value="0">Select Article</option>  
+                      <option value="1">Bar Chart1</option>
+                      <option value="2">Pie Chart1</option>
+                      <option value="3">Top5 Bar Chart</option>
+                    </select>
+                    <div id="checkboxArea"></div><br>
+                    <div id="IndividualChart"></div>
+            </div>
+            <div class="container-fluid" id="author" style="display:none">
+                <h1>Author Analytic</h1>
+                <hr>
+                <div>
+                    <h5>Type in the author:</h5>
+                    <form class="form-inline">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" name="search" id="search" />
+                        </div>
+                        <input type="button" id="searchButton" value="search" class="btn btn-primary mb-2" />
+                    </form>
+                </div>
+                <hr>
+                <div id="listbox">
+                    <table id="table" class="cell-border display hover">
+                        <caption>articles</caption>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Index</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Number of revisions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script> -->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/authorJS.js" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script src="/js/overall.js"></script>
+    <script src="/js/individual.js"></script>
+    
+</body>
+
+</html>

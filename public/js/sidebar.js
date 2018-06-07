@@ -1,0 +1,18 @@
+$(document).ready(function(){
+    $("#authorButton").on('click',function(){
+        $('#overall').hide()
+        $('#individual').hide()
+        $('#author').show()
+    })
+    $("#overallButton").on('click',function(){
+        $('#myChart').empty()        
+        $('#overall').show()
+        $('#individual').hide()
+        $('#author').hide()
+    })
+    $("#individualButton").on('click',function(){
+        $('#overall').hide()
+        $('#individual').show()
+        $('#author').hide()
+    })
+})
